@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+<link rel="stylesheet" href="https://fontawesome.com">
+<link rel="stylesheet" href="/public/css/cart.css">
+
+<div class="container-checkout">
+        <div class="back">
+          <i class="back-to-store">Volver a la tienda</i>
+        </div>
+        <div class="c-tit">
+            <div class="tit">Detalle de la compra</div>
+        </div>
+        <div class="contenido" id="contCarr">
+            {{#each products}}
+                <div class="cartProd">
+                    <div class="img-prod">
+                        <img src="{{this.productId.thumbnails}}" width="85" height="110" alt="{{this.productId.title}}" />
+                    </div>
+                    <div class="prod-details">
+                        <h3 class="prod-name">{{this.productId.title}}</h3>
+                        <p class="prod-description">{{this.productId.description}}</p>
+                        <p class="prod-price">${{this.productId.price}}</p>
+                        <p class="prod-quantity">Quantity: {{this.quantity}}</p>
+                    </div>
+                    <div class="prodActions">
+                        <button class="fa-regular fa-trash-can" id="${carrito.id}"></button>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="total">
+            <h3>TOTAL <span id="totCarr"></span></span></h3>
+        </div>
+        <div class="btn-fin">
+            <button class="fin" id="finalizarCompra">Finalizar Compra</button>
+        </div>
+</div>

@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    padding: 0px;
+    color: rgb(109, 107, 92);;
+}
+
+a{
+    color: #3d3c3c;
+    padding: 0px;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px !important; 
+}
+
+.btn {
+    padding: 8px 10px;
+    color: rgb(61, 60, 60);
+    align-items: center;
+    transition: all 0,3s;
+    border: none;
+    background-color:rgb(227, 225, 206);
+}
+
+.btn:hover{
+    background-color:rgb(206, 206, 182);
+}
+
+.redirect-login{
+    text-align: center;
+    align-items: center; 
+    padding-top: 2px;
+}
+

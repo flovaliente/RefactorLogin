@@ -20,9 +20,10 @@ class ProductManagerDB {
         }
     }
 
-    async getProducts(){
+    async getProducts(criteria, options){
         try {
-            return await productModel.find();
+            //return await productModel.find();
+            return await productModel.paginate(criteria, options);
         } catch (error) {
             console.error(error.message);
             throw new Error(`Error trying to find products.`);

@@ -1,0 +1,55 @@
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* General container styles */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+/* Logo styles */
+#logo {
+    position: absolute;
+    top: 10px; /* Ajusta este valor según sea necesario */
+    left: 10px; /* Ajusta este valor según sea necesario */
+}
+
+.logo {
+    max-width: 100px; /* Ajusta este valor según sea necesario */
+}
+
+/* Text container styles */
+.text-container {
+    text-align: center;
+    width: 100%;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

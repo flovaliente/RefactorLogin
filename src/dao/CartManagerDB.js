@@ -40,12 +40,12 @@ class CartManagerDB {
 
     async getCartById(cid, populate = false){
         try {
-            const cart = await cartModel.findOne({ _id: cid });
+            return cart = await cartModel.findById(cid).populate("products.productId").lean();
         
-            if(populate)
-                return await cart.populate('products.productId');
+            //if(populate)
+                //return await cart.populate('products.productId');
 
-            return cart;
+            //return cart;
         } catch (error) {
             console.error(error.message);
             throw new Error(`Cart with id: ${cid} do not exist.`);
@@ -72,8 +72,16 @@ class CartManagerDB {
         }
     }
 
-    async updateQuantityCart(cid, pid){
-        
+    async updateQuantityCart(cid, pid, quantity){
+        try {
+            return cartModel.updateOne(
+                { _id: cid, "products.productId": pid }, 
+                { $set: { "products.$.quantity": quantity }}
+            );
+        } catch (error) {
+            console.error(error.message);
+            throw new Error(`Error updating product quantity.`);
+        }
     }
 
     async deleteCart(cid){

@@ -1,0 +1,33 @@
+<h1>Welcome to the store</h1>
+
+<div>
+    <h3>Add Product</h3>
+    <form id="addProduct" action="/api/products" method="post">
+        <input id="titleProduct" type="text" placeholder="Write the name" required>
+        <input id="descriptionProduct" type="text" placeholder="Write a desctiption" required>
+        <input id="codeProduct" type="text" placeholder="Write the product code" required>
+        <input id="priceProduct" type="text" placeholder="Write the price" required>
+        <input id="stockProduct" type="text" placeholder="Write the available stock" required>
+        <input id="categoryProduct" type="text" placeholder="Write the category" required>
+        <button id="submitButton" type="submit">Add</button>
+    </form>
+</div>
+
+<div>
+    <h3>View Products in Real-Time</h3>
+    <div id="listRTP">
+
+    </div>
+</div>
+
+<div>
+    <h3>Delete Product</h3>
+    <form id="deleteProduct" action="/api/products/:pid" method="delete">
+        <input id="idDeleteProduct" type="text" placeholder="Write the product id" required>
+        <button id="deleteButton" type="submit">Delete</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

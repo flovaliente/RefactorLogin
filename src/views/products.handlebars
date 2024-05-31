@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+  <div class="container">
+    <div class="user-conteiner">
+      <h1>{{user.first_name}} {{user.last_name}}</h1>
+      <p>Email: {{user.email}}</p>
+      <h4>Age: {{user.age}}</h4>
+      <h4>Role: {{user.role}}</h4>
+      <a class="logout" href="/api/users/logout">Logout</a>
+    </div>
+
+    <hr>
+    <h2 class="text-center">Products</h2>
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table id="main" class="table">
+            <tbody>
+              {{#each products.docs}}
+                <div class="central">
+                  <div class="cntrlBox">
+                    <div class="container-products" id="seccionprod">
+                      <div class="products" id="{{this._id}}">
+                        <img src="img/{{this.thumbnails}}" class="product__img" width="400" height="430" >
+                        <div class="product-description">
+                          <h3 class="product__title">{{this.title}}</h3>
+                          <span class="product-price">$ {{this.price}}</span>
+                        </div>
+                      
+                        <a href="http://localhost:8080/api/products/{{this._id}}" role="button" class="btn btn-secondary">Add to cart</a>
+                      
+                  
+                  </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="my-3">Página actual: {{page}}</p>
+        <a href="{{prevLink}}" role="button" class="btn btn-secondary {{#unless hasPrevPage}} disabled {{/unless}}">Last Page</a>
+        <a href="{{nextLink}}" role="button" class="btn btn-secondary {{#unless hasNextPage}} disabled {{/unless}}">Next Page</a>
+      </div>
+    </div>
+  </div>
