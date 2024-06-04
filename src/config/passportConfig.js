@@ -5,7 +5,7 @@ import local from "passport-local";
 import { userModel } from "../dao/models/userModel.js";
 import CartManagerDB from "../dao/CartManagerDB.js";
 import UserManagerDB from "../dao/UserManagerDB.js";
-import { createHash, isValidPassword } from "../utils/functionsUtils.js";
+import { isValidPassword } from "../utils/functionsUtils.js";
 
 const cartManager = new CartManagerDB();
 const userManager = new UserManagerDB();
@@ -23,15 +23,20 @@ const initializatePassport = () => {
         },
         async (accessToken, refreshToken, profile, done) =>{
             try {
+                const email = profile._json.email || profile.profileUrl; // Por si email es null
                 console.log(profile);
+
                 const user = await userModel.findOne({ email: profile._json.email });
 
                 if(!user){
                     let newUser = {
-                        id: profile._id,
+                        id: profile.id,
                         username: profile._json.login,
                         firstName: profile._json.name,
-                        email: profile._json.email,
+                        lastName: '',
+                        age: 18,
+                        password: '1234',
+                        email: email,
                         role: "Usuario"
                     }
 

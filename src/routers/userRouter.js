@@ -16,14 +16,7 @@ router.post('/register', passport.authenticate("register", { failureRedirect: "/
         const result = await userManager.registerUser(user);
         const cart = await cartManager.createCart();
         await userManager.createUserCart(result._id, cart._id);
-        //return res.redirect("/login");
-
-        req.session.user = user;
-        return res.redirect("/products");
-
-        //await userModel.create(req.body);
-        //delete user.password;
-        //req.session.user = user;
+        res.redirect('/login');
     } catch (error) {
         res.redirect('/register');
     }
@@ -56,7 +49,6 @@ router.post("/login", passport.authenticate("login", { failureRedirect: "api/ses
             return res.redirect("/login");
         }
 
-        //delete user.password;
         req.session.user = user;
         return res.redirect("/products");
     } catch (error) {

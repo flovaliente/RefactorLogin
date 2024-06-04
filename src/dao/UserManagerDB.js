@@ -5,16 +5,16 @@ class UserManagerDB{
 
     async registerUser(user){
         try {
-            if(user.email == 'adminCoder@coder.com' && isValidPassword(user, 'adminCod3r123')){
-                user.password = createHash(user.password);
+            if(user.email == 'adminCoder@coder.com' && user.password && isValidPassword(user, 'adminCod3r123')){
+                
                 const result = await userModel.create(user);
                 result.role = 'admin';
                 result.save();
                 return result;
             }
-
-            user.password = createHash(user.password);
+            
             const result = await userModel.create(user);
+            console.log("Usuario: ", user);
             return result;
         } catch (error) {
             console.error(error.message);
